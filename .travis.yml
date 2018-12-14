@@ -10,8 +10,11 @@ os:
   - linux
   - windows
 
+install:
+  - npm install --ignore-scripts
+
 script:
-  - sudo env "PATH=$PATH" npm test
+  - npm test
 
 sudo: enabled
 
