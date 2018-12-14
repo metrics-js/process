@@ -4,18 +4,18 @@ const tap = require('tap');
 
 const Collector = require('../lib/collector-open-file-descriptors');
 
-tap.grep = process.platform === 'linux' ? [/condition:metrics/] : [/condition:unsupported/];
+tap.grep = process.platform === 'linux' ? [/condition:all/, /condition:metrics/] : [/condition:all/, /condition:unsupported/];
+
+tap.test('Constructor() - condition:all - object type - should be CollectorOpenFileDescriptors', (t) => {
+    const collector = new Collector();
+    t.equal(Object.prototype.toString.call(collector), '[object CollectorOpenFileDescriptors]');
+    t.end();
+});
 
 tap.test('contextual tests', (tp) => {
     /**
      * When the operating system support reporting file descriptors
      */
-
-    tap.test('Constructor() - condition:supported - object type - should be CollectorOpenFileDescriptors', (t) => {
-        const collector = new Collector();
-        t.equal(Object.prototype.toString.call(collector), '[object CollectorOpenFileDescriptors]');
-        t.end();
-    });
 
     tap.test('.collect() - condition:supported - call method - should return an object', (t) => {
         const collector = new Collector();
@@ -43,12 +43,6 @@ tap.test('contextual tests', (tp) => {
     /**
      * When the operating system DOES NOT support reporting file descriptors
      */
-
-    tap.test('Constructor() - condition:unsupported - object type - should be CollectorOpenFileDescriptors', (t) => {
-        const collector = new Collector();
-        t.equal(Object.prototype.toString.call(collector), '[object CollectorOpenFileDescriptors]');
-        t.end();
-    });
 
     tap.test('.collect() - condition:unsupported - call method - should return "null"', async (t) => {
         const collector = new Collector();

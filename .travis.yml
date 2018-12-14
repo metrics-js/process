@@ -6,8 +6,8 @@ node_js:
   - '8'
 
 os:
-  - osx
   - linux
+  - osx
   - windows
 
 install:
