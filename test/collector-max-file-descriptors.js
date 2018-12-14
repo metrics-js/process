@@ -5,7 +5,6 @@ const tap = require('tap');
 const Collector = require('../lib/collector-max-file-descriptors');
 
 tap.grep = process.platform === 'linux' ? [/condition:metrics/] : [/condition:unsupported/];
-console.log('XXXXX', process.platform);
 
 tap.test('contextual tests', (tp) => {
     /**
