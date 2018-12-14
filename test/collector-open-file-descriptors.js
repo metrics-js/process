@@ -38,8 +38,6 @@ tap.test('contextual tests', (tp) => {
         t.end();
     });
 
-
-
     /**
      * When the operating system DOES NOT support reporting file descriptors
      */
