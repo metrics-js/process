@@ -5,6 +5,11 @@ node_js:
   - '10'
   - '8'
 
+os:
+  - osx
+  - linux
+  - windows
+
 script:
   - sudo env "PATH=$PATH" npm test
 
