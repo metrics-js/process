@@ -10,31 +10,32 @@ tap.test('Constructor() - object type - should be CollectorProcessStartTime', (t
     t.end();
 });
 
-tap.test('.collect() - call method - should return an object', (t) => {
+tap.test('.collect() - call method - should return an Array with the length of 1', (t) => {
     const collector = new Collector();
     const result = collector.collect();
-    t.type(result, 'object');
+    t.true(Array.isArray(result));
+    t.equal(result.length, 1);
     t.end();
 });
 
-tap.test('.collect() - call method - should return an object where "name" is "process_start_time_seconds"', (t) => {
+tap.test('.collect() - call method - 1st item in Array - should return an object where "name" is "process_start_time_seconds"', (t) => {
     const collector = new Collector();
     const result = collector.collect();
-    t.equal(result.name, 'process_start_time_seconds');
+    t.equal(result[0].name, 'process_start_time_seconds');
     t.end();
 });
 
-tap.test('.collect() - call method - should return an object where "value" is an Integer', (t) => {
+tap.test('.collect() - call method - 1st item in Array - should return an object where "value" is an Integer', (t) => {
     const collector = new Collector();
     const result = collector.collect();
-    t.true(Number.isInteger(result.value));
+    t.true(Number.isInteger(result[0].value));
     t.end();
 });
 
 tap.test('.collect() - call method twice - should return "null" on second call', (t) => {
     const collector = new Collector();
     const resultA = collector.collect();
-    t.type(resultA, 'object');
+    t.true(Array.isArray(resultA));
 
     const resultB = collector.collect();
     t.true(resultB === null);

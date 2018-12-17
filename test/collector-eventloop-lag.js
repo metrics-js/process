@@ -10,25 +10,26 @@ tap.test('Constructor() - object type - should be CollectorEventloopLag', (t) =>
     t.end();
 });
 
-tap.test('.collect() - call method - should return an object', async (t) => {
+tap.test('.collect() - call method - should return an Array with the length of 1', async (t) => {
     const collector = new Collector();
     const result = await collector.collect();
-    t.type(result, 'object');
+    t.true(Array.isArray(result));
+    t.equal(result.length, 1);
     t.end();
 });
 
-tap.test('.collect() - call method - should return an object where "name" is "eventloop_lag_seconds"', async (t) => {
+tap.test('.collect() - call method - 1st item in Array - should return an object where "name" is "eventloop_lag_seconds"', async (t) => {
     const collector = new Collector();
     const result = await collector.collect();
-    t.equal(result.name, 'eventloop_lag_seconds');
+    t.equal(result[0].name, 'eventloop_lag_seconds');
     t.end();
 });
 
-tap.test('.collect() - call method - should return an object where "value" is an Array', async (t) => {
+tap.test('.collect() - call method - 1st item in Array - should return an object where "value" is an Array', async (t) => {
     const collector = new Collector();
     const result = await collector.collect();
-    t.true(Array.isArray(result.value));
-    t.true(Number.isFinite(result.value[0]));
-    t.true(Number.isFinite(result.value[1]));
+    t.true(Array.isArray(result[0].value));
+    t.true(Number.isFinite(result[0].value[0]));
+    t.true(Number.isFinite(result[0].value[1]));
     t.end();
 });

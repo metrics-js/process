@@ -17,24 +17,25 @@ tap.test('contextual tests', (tp) => {
      * When the operating system support reporting file descriptors
      */
 
-    tap.test('.collect() - condition:supported - call method - should return an object', (t) => {
+    tap.test('.collect() - condition:supported - call method - should return an Array with the length of 1', (t) => {
         const collector = new Collector();
         const result = collector.collect();
-        t.type(result, 'object');
+        t.true(Array.isArray(result));
+        t.equal(result.length, 1);
         t.end();
     });
 
-    tap.test('.collect() - condition:supported - call method - should return an object where "name" is "process_open_fds"', async (t) => {
+    tap.test('.collect() - condition:supported - call method - 1st item in Array - should return an object where "name" is "process_open_fds"', async (t) => {
         const collector = new Collector();
         const result = await collector.collect();
-        t.equal(result.name, 'process_open_fds');
+        t.equal(result[0].name, 'process_open_fds');
         t.end();
     });
 
-    tap.test('.collect() - condition:supported - call method - should return an object where "value" is an Array', async (t) => {
+    tap.test('.collect() - condition:supported - call method - 1st item in Array - should return an object where "value" is an Array', async (t) => {
         const collector = new Collector();
         const result = await collector.collect();
-        t.true(Array.isArray(result.value));
+        t.true(Array.isArray(result[0].value));
         t.end();
     });
 

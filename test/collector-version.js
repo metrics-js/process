@@ -10,31 +10,32 @@ tap.test('Constructor() - object type - should be CollectorVersion', (t) => {
     t.end();
 });
 
-tap.test('.collect() - call method - should return an object', (t) => {
+tap.test('.collect() - call method - should return an Array with the length of 1', (t) => {
     const collector = new Collector();
     const result = collector.collect();
-    t.type(result, 'object');
+    t.true(Array.isArray(result));
+    t.equal(result.length, 1);
     t.end();
 });
 
-tap.test('.collect() - call method - should return an object where "name" is "nodejs_version_info"', (t) => {
+tap.test('.collect() - call method - 1st item in Array - should return an object where "name" is "nodejs_version_info"', (t) => {
     const collector = new Collector();
     const result = collector.collect();
-    t.equal(result.name, 'nodejs_version_info');
+    t.equal(result[0].name, 'nodejs_version_info');
     t.end();
 });
 
-tap.test('.collect() - call method - should return an object where "value" is an Array', (t) => {
+tap.test('.collect() - call method - 1st item in Array - should return an object where "value" is an Array', (t) => {
     const collector = new Collector();
     const result = collector.collect();
-    t.true(Array.isArray(result.value));
+    t.true(Array.isArray(result[0].value));
     t.end();
 });
 
 tap.test('.collect() - call method twice - should return "null" on second call', async (t) => {
     const collector = new Collector();
     const resultA = await collector.collect();
-    t.type(resultA, 'object');
+    t.true(Array.isArray(resultA));
 
     const resultB = await collector.collect();
     t.true(resultB === null);

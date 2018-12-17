@@ -21,7 +21,7 @@
   "homepage": "https://github.com/metrics-js/process#readme",
   "dependencies": {
     "@metrics/client": "^2.1.0",
-    "deferred-interval": "^1.0.1"
+    "deferred-interval": "^2.0.0"
   },
   "devDependencies": {
     "eslint": "^5.10.0",
