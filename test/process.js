@@ -35,23 +35,17 @@ tap.test('Constructor() - object type - should be MetricsProcess', (t) => {
 tap.test('Constructor() - foo - should foo', (t) => {
     const proc = new Process();
     const dest = destObjectStream((result) => {
-        console.log(result);
-        // proc.stop();
+//        console.log(result);
         t.end();
+    });
+
+    proc.on('collect:end', () => {
+        dest.end();
     });
 
     proc.pipe(dest);
 
     proc.start();
-    /*
-    setImmediate(() => {
-        proc.stop();
-        dest.end();
-    });
-*/
 
-    setTimeout(() => {
-        dest.end();
-    }, 100);
     t.equal(Object.prototype.toString.call(proc), '[object MetricsProcess]');
 });
