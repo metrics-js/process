@@ -21,15 +21,15 @@ tap.test('.collect() - call method - should return an Array with the length of 1
 tap.test('.collect() - call method - 1st item in Array - should return an object where "name" is "eventloop_lag_seconds"', async (t) => {
     const collector = new Collector();
     const result = await collector.collect();
+    t.type(result[0], 'object');
     t.equal(result[0].name, 'eventloop_lag_seconds');
     t.end();
 });
 
-tap.test('.collect() - call method - 1st item in Array - should return an object where "value" is an Array', async (t) => {
+tap.test('.collect() - call method - 1st item in Array - should return an object where "value" is an Integer', async (t) => {
     const collector = new Collector();
     const result = await collector.collect();
-    t.true(Array.isArray(result[0].value));
-    t.true(Number.isFinite(result[0].value[0]));
-    t.true(Number.isFinite(result[0].value[1]));
+    t.type(result[0], 'object');
+    t.true(Number.isFinite(result[0].value));
     t.end();
 });

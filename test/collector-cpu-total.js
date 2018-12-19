@@ -33,11 +33,11 @@ tap.test('.collect() - call method - 1st item in Array - should be an object whe
     t.end();
 });
 
-tap.test('.collect() - call method - 1st item in Array - should be an object where "value" is an Array', (t) => {
+tap.test('.collect() - call method - 1st item in Array - should be an object where "value" is an Integer', (t) => {
     const collector = new Collector();
     const result = collector.collect();
     t.type(result[0], 'object');
-    t.true(Array.isArray(result[0].value));
+    t.true(Number.isFinite(result[0].value));
     t.end();
 });
 
@@ -49,11 +49,11 @@ tap.test('.collect() - call method - 2nd item in Array - should be an object whe
     t.end();
 });
 
-tap.test('.collect() - call method - 2nd item in Array - should be an object where "value" is an Array', (t) => {
+tap.test('.collect() - call method - 2nd item in Array - should be an object where "value" is an Integer', (t) => {
     const collector = new Collector();
     const result = collector.collect();
     t.type(result[1], 'object');
-    t.true(Array.isArray(result[1].value));
+    t.true(Number.isFinite(result[1].value));
     t.end();
 });
 
@@ -65,10 +65,10 @@ tap.test('.collect() - call method - 3rd item in Array - should be an object whe
     t.end();
 });
 
-tap.test('.collect() - call method - 3rd item in Array - should be an object where "value" is an Array', (t) => {
+tap.test('.collect() - call method - 3rd item in Array - should be an object where "value" is an Integer', (t) => {
     const collector = new Collector();
     const result = collector.collect();
     t.type(result[2], 'object');
-    t.true(Array.isArray(result[2].value));
+    t.true(Number.isFinite(result[2].value));
     t.end();
 });
