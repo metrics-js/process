@@ -25,19 +25,32 @@ tap.test('.collect() - call method - 1st item in Array - should return an object
     t.end();
 });
 
-tap.test('.collect() - call method - 1st item in Array - should return an object where "value" is an Array', (t) => {
+tap.test('.collect() - call method - 1st item in Array - should return an object where "value" is 1', (t) => {
     const collector = new Collector();
     const result = collector.collect();
-    t.true(Array.isArray(result[0].value));
+    t.type(result[0], 'object');
+    t.equal(result[0].value, 1);
     t.end();
 });
 
-tap.test('.collect() - call method twice - should return "null" on second call', async (t) => {
+tap.test('.collect() - call method - 1st item in Array - should return an object where "meta" is and object with version numbers as segmens', (t) => {
     const collector = new Collector();
-    const resultA = await collector.collect();
+    const result = collector.collect();
+    t.type(result[0], 'object');
+    t.type(result[0].meta, 'object');
+    t.type(result[0].meta.version, 'string');
+    t.true(Number.isInteger(result[0].meta.major));
+    t.true(Number.isInteger(result[0].meta.minor));
+    t.true(Number.isInteger(result[0].meta.patch));
+    t.end();
+});
+
+tap.test('.collect() - call method twice - should return "null" on second call', (t) => {
+    const collector = new Collector();
+    const resultA = collector.collect();
     t.true(Array.isArray(resultA));
 
-    const resultB = await collector.collect();
+    const resultB = collector.collect();
     t.true(resultB === null);
     t.end();
 });
