@@ -35,7 +35,7 @@ tap.test('Constructor() - object type - should be MetricsProcess', (t) => {
 tap.test('Constructor() - foo - should foo', (t) => {
     const proc = new Process();
     const dest = destObjectStream((result) => {
-        console.log(result);
+        t.true(Array.isArray(result));
         t.end();
     });
 
@@ -45,6 +45,4 @@ tap.test('Constructor() - foo - should foo', (t) => {
 
     proc.pipe(dest);
     proc.start();
-
-    t.equal(Object.prototype.toString.call(proc), '[object MetricsProcess]');
 });
