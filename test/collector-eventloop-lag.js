@@ -18,11 +18,11 @@ tap.test('.collect() - call method - should return an Array with the length of 1
     t.end();
 });
 
-tap.test('.collect() - call method - 1st item in Array - should return an object where "name" is "eventloop_lag_seconds"', async (t) => {
+tap.test('.collect() - call method - 1st item in Array - should return an object where "name" is "nodejs_eventloop_lag_seconds"', async (t) => {
     const collector = new Collector();
     const result = await collector.collect();
     t.type(result[0], 'object');
-    t.equal(result[0].name, 'eventloop_lag_seconds');
+    t.equal(result[0].name, 'nodejs_eventloop_lag_seconds');
     t.end();
 });
 
