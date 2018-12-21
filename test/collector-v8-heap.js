@@ -38,12 +38,10 @@ tap.test('.collect() - call method - 1st item in Array - should return an object
     const result = collector.collect();
     t.type(result[0], 'object');
     t.type(result[0].meta, 'object');
-    t.true(Number.isInteger(result[0].meta.read_only));
-    t.true(Number.isInteger(result[0].meta.new));
-    t.true(Number.isInteger(result[0].meta.old));
-    t.true(Number.isInteger(result[0].meta.code));
-    t.true(Number.isInteger(result[0].meta.map));
-    t.true(Number.isInteger(result[0].meta.large_object));
+    // Keys can vary between node versions, just check that they are numbers
+    Object.keys(result[0].meta).forEach((key) => {
+        t.true(Number.isInteger(result[0].meta[key]));
+    });
     t.end();
 });
 
@@ -67,12 +65,10 @@ tap.test('.collect() - call method - 2st item in Array - should return an object
     const result = collector.collect();
     t.type(result[1], 'object');
     t.type(result[1].meta, 'object');
-    t.true(Number.isInteger(result[1].meta.read_only));
-    t.true(Number.isInteger(result[1].meta.new));
-    t.true(Number.isInteger(result[1].meta.old));
-    t.true(Number.isInteger(result[1].meta.code));
-    t.true(Number.isInteger(result[1].meta.map));
-    t.true(Number.isInteger(result[1].meta.large_object));
+    // Keys can vary between node versions, just check that they are numbers
+    Object.keys(result[1].meta).forEach((key) => {
+        t.true(Number.isInteger(result[1].meta[key]));
+    });
     t.end();
 });
 
@@ -96,11 +92,9 @@ tap.test('.collect() - call method - 3rd item in Array - should return an object
     const result = collector.collect();
     t.type(result[2], 'object');
     t.type(result[2].meta, 'object');
-    t.true(Number.isInteger(result[2].meta.read_only));
-    t.true(Number.isInteger(result[2].meta.new));
-    t.true(Number.isInteger(result[2].meta.old));
-    t.true(Number.isInteger(result[2].meta.code));
-    t.true(Number.isInteger(result[2].meta.map));
-    t.true(Number.isInteger(result[2].meta.large_object));
+    // Keys can vary between node versions, just check that they are numbers
+    Object.keys(result[2].meta).forEach((key) => {
+        t.true(Number.isInteger(result[2].meta[key]));
+    });
     t.end();
 });
