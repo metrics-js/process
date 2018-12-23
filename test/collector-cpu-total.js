@@ -33,6 +33,13 @@ tap.test('.collect() - call method - 1st item in Array - should be an object whe
     t.end();
 });
 
+tap.test('.collect() - "prefix" on constructor is set - 1st item in Array - should prepend prefix to "name" in metric', (t) => {
+    const collector = new Collector('foo_');
+    const result = collector.collect();
+    t.equal(result[0].name, 'foo_process_cpu_user_seconds_total');
+    t.end();
+});
+
 tap.test('.collect() - call method - 1st item in Array - should be an object where "value" is an Integer', (t) => {
     const collector = new Collector();
     const result = collector.collect();
@@ -49,6 +56,13 @@ tap.test('.collect() - call method - 2nd item in Array - should be an object whe
     t.end();
 });
 
+tap.test('.collect() - "prefix" on constructor is set - 2nd item in Array - should prepend prefix to "name" in metric', (t) => {
+    const collector = new Collector('foo_');
+    const result = collector.collect();
+    t.equal(result[1].name, 'foo_process_cpu_system_seconds_total');
+    t.end();
+});
+
 tap.test('.collect() - call method - 2nd item in Array - should be an object where "value" is an Integer', (t) => {
     const collector = new Collector();
     const result = collector.collect();
@@ -62,6 +76,13 @@ tap.test('.collect() - call method - 3rd item in Array - should be an object whe
     const result = collector.collect();
     t.type(result[2], 'object');
     t.equal(result[2].name, 'process_cpu_seconds_total');
+    t.end();
+});
+
+tap.test('.collect() - "prefix" on constructor is set - 3rd item in Array - should prepend prefix to "name" in metric', (t) => {
+    const collector = new Collector('foo_');
+    const result = collector.collect();
+    t.equal(result[2].name, 'foo_process_cpu_seconds_total');
     t.end();
 });
 

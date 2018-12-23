@@ -25,6 +25,13 @@ tap.test('.collect() - call method - 1st item in Array - should return an object
     t.end();
 });
 
+tap.test('.collect() - "prefix" on constructor is set - 1st item in Array - should prepend prefix to "name" in metric', (t) => {
+    const collector = new Collector('foo_');
+    const result = collector.collect();
+    t.equal(result[0].name, 'foo_nodejs_heap_space_size_total_bytes');
+    t.end();
+});
+
 tap.test('.collect() - call method - 1st item in Array - should return an object without a "value" key', (t) => {
     const collector = new Collector();
     const result = collector.collect();
@@ -45,14 +52,21 @@ tap.test('.collect() - call method - 1st item in Array - should return an object
     t.end();
 });
 
-tap.test('.collect() - call method - 2st item in Array - should return an object where "name" is "nodejs_heap_space_size_used_bytes"', (t) => {
+tap.test('.collect() - call method - 2nd item in Array - should return an object where "name" is "nodejs_heap_space_size_used_bytes"', (t) => {
     const collector = new Collector();
     const result = collector.collect();
     t.equal(result[1].name, 'nodejs_heap_space_size_used_bytes');
     t.end();
 });
 
-tap.test('.collect() - call method - 2st item in Array - should return an object without a "value" key', (t) => {
+tap.test('.collect() - "prefix" on constructor is set - 2nd item in Array - should prepend prefix to "name" in metric', (t) => {
+    const collector = new Collector('foo_');
+    const result = collector.collect();
+    t.equal(result[1].name, 'foo_nodejs_heap_space_size_used_bytes');
+    t.end();
+});
+
+tap.test('.collect() - call method - 2nd item in Array - should return an object without a "value" key', (t) => {
     const collector = new Collector();
     const result = collector.collect();
     t.type(result[1], 'object');
@@ -60,7 +74,7 @@ tap.test('.collect() - call method - 2st item in Array - should return an object
     t.end();
 });
 
-tap.test('.collect() - call method - 2st item in Array - should return an object where "meta" is and object with metadata', (t) => {
+tap.test('.collect() - call method - 2nd item in Array - should return an object where "meta" is and object with metadata', (t) => {
     const collector = new Collector();
     const result = collector.collect();
     t.type(result[1], 'object');
@@ -76,6 +90,13 @@ tap.test('.collect() - call method - 3rd item in Array - should return an object
     const collector = new Collector();
     const result = collector.collect();
     t.equal(result[2].name, 'nodejs_heap_space_size_available_bytes');
+    t.end();
+});
+
+tap.test('.collect() - "prefix" on constructor is set - 3rd item in Array - should prepend prefix to "name" in metric', (t) => {
+    const collector = new Collector('foo_');
+    const result = collector.collect();
+    t.equal(result[2].name, 'foo_nodejs_heap_space_size_available_bytes');
     t.end();
 });
 

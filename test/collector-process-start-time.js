@@ -26,6 +26,13 @@ tap.test('.collect() - call method - 1st item in Array - should return an object
     t.end();
 });
 
+tap.test('.collect() - "prefix" on constructor is set - 1st item in Array - should prepend prefix to "name" in metric', (t) => {
+    const collector = new Collector('foo_');
+    const result = collector.collect();
+    t.equal(result[0].name, 'foo_process_start_time_seconds');
+    t.end();
+});
+
 tap.test('.collect() - call method - 1st item in Array - should return an object where "value" is an Integer', (t) => {
     const collector = new Collector();
     const result = collector.collect();

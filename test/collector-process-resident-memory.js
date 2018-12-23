@@ -32,6 +32,13 @@ tap.test('.collect() - condition:supported - call method - 1st item in Array - s
     t.end();
 });
 
+tap.test('.collect() - condition:supported - "prefix" on constructor is set - 1st item in Array - should prepend prefix to "name" in metric', async (t) => {
+    const collector = new Collector('foo_');
+    const result = await collector.collect();
+    t.equal(result[0].name, 'foo_process_resident_memory_bytes');
+    t.end();
+});
+
 tap.test('.collect() - condition:supported - call method - 1st item in Array - should return an object where "value" is an Integer', async (t) => {
     const collector = new Collector();
     const result = await collector.collect();
@@ -40,7 +47,7 @@ tap.test('.collect() - condition:supported - call method - 1st item in Array - s
     t.end();
 });
 
-tap.test('.collect() - condition:supported - call method - 2st item in Array - should return an object where "name" is "process_virtual_memory_bytes"', async (t) => {
+tap.test('.collect() - condition:supported - call method - 2nd item in Array - should return an object where "name" is "process_virtual_memory_bytes"', async (t) => {
     const collector = new Collector();
     const result = await collector.collect();
     t.type(result[1], 'object');
@@ -48,7 +55,14 @@ tap.test('.collect() - condition:supported - call method - 2st item in Array - s
     t.end();
 });
 
-tap.test('.collect() - condition:supported - call method - 2st item in Array - should return an object where "value" is an Integer', async (t) => {
+tap.test('.collect() - condition:supported - "prefix" on constructor is set - 2nd item in Array - should prepend prefix to "name" in metric', async (t) => {
+    const collector = new Collector('foo_');
+    const result = await collector.collect();
+    t.equal(result[1].name, 'foo_process_virtual_memory_bytes');
+    t.end();
+});
+
+tap.test('.collect() - condition:supported - call method - 2nd item in Array - should return an object where "value" is an Integer', async (t) => {
     const collector = new Collector();
     const result = await collector.collect();
     t.type(result[1], 'object');
@@ -56,7 +70,7 @@ tap.test('.collect() - condition:supported - call method - 2st item in Array - s
     t.end();
 });
 
-tap.test('.collect() - condition:supported - call method - 3st item in Array - should return an object where "name" is "process_heap_bytes"', async (t) => {
+tap.test('.collect() - condition:supported - call method - 3rd item in Array - should return an object where "name" is "process_heap_bytes"', async (t) => {
     const collector = new Collector();
     const result = await collector.collect();
     t.type(result[2], 'object');
@@ -64,7 +78,14 @@ tap.test('.collect() - condition:supported - call method - 3st item in Array - s
     t.end();
 });
 
-tap.test('.collect() - condition:supported - call method - 3st item in Array - should return an object where "value" is an Integer', async (t) => {
+tap.test('.collect() - condition:supported - "prefix" on constructor is set - 3rd item in Array - should prepend prefix to "name" in metric', async (t) => {
+    const collector = new Collector('foo_');
+    const result = await collector.collect();
+    t.equal(result[2].name, 'foo_process_heap_bytes');
+    t.end();
+});
+
+tap.test('.collect() - condition:supported - call method - 3rd item in Array - should return an object where "value" is an Integer', async (t) => {
     const collector = new Collector();
     const result = await collector.collect();
     t.type(result[2], 'object');

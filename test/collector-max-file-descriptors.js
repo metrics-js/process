@@ -32,6 +32,13 @@ tap.test('.collect() - condition:supported - call method - 1st item in Array - s
     t.end();
 });
 
+tap.test('.collect() - condition:supported - "prefix" on constructor is set - 1st item in Array - should prepend prefix to "name" in metric', async (t) => {
+    const collector = new Collector('foo_');
+    const result = await collector.collect();
+    t.equal(result[0].name, 'foo_process_max_fds');
+    t.end();
+});
+
 tap.test('.collect() - condition:supported - call method - 1st item in Array - should return an object where "value" is an Integer', async (t) => {
     const collector = new Collector();
     const result = await collector.collect();

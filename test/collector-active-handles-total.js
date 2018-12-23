@@ -26,10 +26,29 @@ tap.test('.collect() - call method - 1st item in Array - should return an object
     t.end();
 });
 
-tap.test('.collect() - call method - 1st item in Array - should return an object where "value" is an Integer', async (t) => {
+tap.test('.collect() - "prefix" on constructor is set - 1st item in Array - should prepend prefix to "name" in metric', (t) => {
+    const collector = new Collector('foo_');
+    const result = collector.collect();
+    t.equal(result[0].name, 'foo_nodejs_active_handles_total');
+    t.end();
+});
+
+tap.test('.collect() - call method - 1st item in Array - should return an object where "value" is an Integer', (t) => {
     const collector = new Collector();
-    const result = await collector.collect();
+    const result = collector.collect();
     t.type(result[0], 'object');
     t.true(Number.isFinite(result[0].value));
+    t.end();
+});
+
+tap.test('.collect() - "process._getActiveHandles" is not a function - should return "null"', (t) => {
+    const original = process._getActiveHandles;
+    process._getActiveHandles = null;
+
+    const collector = new Collector();
+    const result = collector.collect();
+    t.true(result === null);
+
+    process._getActiveHandles = original;
     t.end();
 });
