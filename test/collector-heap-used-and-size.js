@@ -87,3 +87,17 @@ tap.test('.collect() - call method - 3rd item in Array - should be an object whe
     t.true(Number.isFinite(result[2].value));
     t.end();
 });
+
+tap.test('.collect() - "process.memoryUsage" throws - should return "null"', (t) => {
+    const original = process.memoryUsage;
+    process.memoryUsage = () => {
+        throw new Error('blah');
+    };
+
+    const collector = new Collector();
+    const result = collector.collect();
+    t.true(result === null);
+
+    process.memoryUsage = original;
+    t.end();
+});
