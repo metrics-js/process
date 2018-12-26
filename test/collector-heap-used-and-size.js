@@ -10,7 +10,6 @@ tap.test('Constructor() - object type - should be CollectorHeadUsedAndSize', (t)
     t.end();
 });
 
-
 tap.test('.collect() - call method - should return an Array with the length of 3', (t) => {
     const collector = new Collector();
     const result = collector.collect();
