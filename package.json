@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/metrics-js/process#readme",
   "dependencies": {
-    "@metrics/client": "^2.1.1",
+    "@metrics/client": "^2.2.0",
     "deferred-interval": "^2.0.0",
     "readable-stream": "^3.1.0"
   },
