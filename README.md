@@ -68,6 +68,10 @@ An Object containing misc configuration. The following values can be provided:
  * **interval** - `Number` - Time between each collection of process metrics in milliseconds. Default: 10000ms.
  * **prefix** - `String` - A prefix to be added to each metrics name.
 
+### returns
+
+Returns a Readable stream in object mode.
+
 ## API
 
 The Process instance have the following API:
@@ -93,3 +97,13 @@ The node.js version used to run the process.
  * **collected when:** only once
  * **collected on:** All operating systems
 
+## Attribution
+
+Most of the metric collectors in this module does origin from the process collectors in [prom-client](https://github.com/siimon/prom-client). prom-client is licensed under a Apache License 2.0, which
+is included in our [license](https://github.com/metrics-js/process/blob/master/LICENSE).
+
+### Metric naming
+
+Due to the above fact, most metrics in this module bear the same name as the process mertics in
+prom-client. If one use this module to provide metrics to Prometheus, these metrics will provide
+the same metrics as by prom-client.
