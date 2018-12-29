@@ -91,11 +91,84 @@ These are the following mertics collected by this module:
 
 ### Version
 
-The node.js version used to run the process.
+The version collector emit a metric with the node.js version used to run the process.
 
  * **metric name:** nodejs_version_info
- * **collected when:** only once
+ * **collected when:** Only once
  * **collected on:** All operating systems
+
+### V8 heap
+
+The V8 Heap collector emit metrics with total heap space in bytes, used heap space in
+bytes and available heap space in bytes from node.js.
+
+Metric I:
+
+ * **metric name:** nodejs_heap_space_size_total_bytes
+ * **collected when:** On every collect
+ * **collected on:** All operating systems
+
+Metric II:
+
+ * **metric name:** nodejs_heap_space_size_used_bytes
+ * **collected when:** On every collect
+ * **collected on:** All operating systems
+
+Metric III:
+
+ * **metric name:** nodejs_heap_space_size_available_bytes
+ * **collected when:** On every collect
+ * **collected on:** All operating systems
+
+### Process start time
+
+The process start time collector emit a metric for when the node.js process started.
+
+ * **metric name:** process_start_time_seconds
+ * **collected when:** Only once
+ * **collected on:** All operating systems
+
+### Resident memory
+
+The resident memory collector emit metrics with resident memory in bytes, virtual
+memory in bytes and process heap size in bytes.
+
+Metric I:
+
+ * **metric name:** process_resident_memory_bytes
+ * **collected when:** On every collect
+ * **collected on:** All operating systems
+
+Metric II:
+
+ * **metric name:** process_virtual_memory_bytes
+ * **collected when:** On every collect
+ * **collected on:** Linux only
+
+Metric III:
+
+ * **metric name:** Process heap size in bytes
+ * **collected when:** On every collect
+ * **collected on:** Linux only
+
+### Open file descriptors
+
+The open file descriptor collector emit a metric with the number of open file
+descriptors.
+
+ * **metric name:** process_open_fds
+ * **collected when:** On every collect
+ * **collected on:** Linux only
+
+### Max file descriptors
+
+The max file descriptor collector emit a metric with the maximum number of file
+descriptors that can be opened.
+
+ * **metric name:** process_max_fds
+ * **collected when:** Only once
+ * **collected on:** Linux only
+
 
 ## Attribution
 
