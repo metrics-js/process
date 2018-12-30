@@ -38,6 +38,22 @@ a readable stream which each metrics is emitted on as an metric object on each s
 The stream of metrics can be piped into ex the [@metrics/client](https://github.com/metrics-js/client)
 or the [@metrics/emitter](https://github.com/metrics-js/emitter) for further distribution.
 
+Example:
+
+```js
+const Process = require('@metrics/process');
+const Client = require('@metrics/client');
+const Emitter = require('@metrics/emitter');
+
+const proc = new Process();
+const client = new Client();
+const emitter = new Emitter('udp', { port: 45000 });
+
+proc.pipe(client).pipe(emitter);
+
+proc.start();
+```
+
 Each metric is collected by a collector. Most collectors will provide metrics on each scheduled
 run but some metrics will only run once due to its nature. There is also sertain metrics which
 only will be collected for sertain operating systems it run on. Please see [collectors](#collectors)
@@ -91,7 +107,7 @@ These are the following mertics collected by this module:
 
 ### Version
 
-The version collector emit a metric with the node.js version used to run the process.
+The Version collector emit a metric with the node.js version used to run the process.
 
  * **metric name:** nodejs_version_info
  * **collected when:** Only once
@@ -99,8 +115,7 @@ The version collector emit a metric with the node.js version used to run the pro
 
 ### V8 heap
 
-The V8 Heap collector emit metrics with total heap space in bytes, used heap space in
-bytes and available heap space in bytes from node.js.
+The V8 Heap collector emit metrics about the V8 heap spaces.
 
 Metric I:
 
@@ -122,7 +137,7 @@ Metric III:
 
 ### Process start time
 
-The process start time collector emit a metric for when the node.js process started.
+The Process start time collector emit a metric for when the node.js process started.
 
  * **metric name:** process_start_time_seconds
  * **collected when:** Only once
@@ -130,7 +145,7 @@ The process start time collector emit a metric for when the node.js process star
 
 ### Resident memory
 
-The resident memory collector emit metrics with resident memory in bytes, virtual
+The Resident memory collector emit metrics with resident memory in bytes, virtual
 memory in bytes and process heap size in bytes.
 
 Metric I:
@@ -147,13 +162,13 @@ Metric II:
 
 Metric III:
 
- * **metric name:** Process heap size in bytes
+ * **metric name:** process_heap_bytes
  * **collected when:** On every collect
  * **collected on:** Linux only
 
 ### Open file descriptors
 
-The open file descriptor collector emit a metric with the number of open file
+The Open file descriptor collector emit a metric with the number of open file
 descriptors.
 
  * **metric name:** process_open_fds
@@ -169,6 +184,77 @@ descriptors that can be opened.
  * **collected when:** Only once
  * **collected on:** Linux only
 
+### Heap used and size
+
+The Heap used and size collector emit metrics about the memory usage of the Node.js
+process.
+
+Metric I:
+
+ * **metric name:** nodejs_heap_size_total_bytes
+ * **collected when:** On every collect
+ * **collected on:** All operating systems
+
+Metric II:
+
+ * **metric name:** nodejs_heap_size_used_bytes
+ * **collected when:** On every collect
+ * **collected on:** All operating systems
+
+Metric III:
+
+ * **metric name:** nodejs_external_memory_bytes
+ * **collected when:** On every collect
+ * **collected on:** All operating systems
+
+### Eventloop lag
+
+The Eventloop lag collector emit a metric with the lag of the eventloop in seconds.
+
+ * **metric name:** nodejs_eventloop_lag_seconds
+ * **collected when:** On every collect
+ * **collected on:** All operating systems
+
+### CPU total
+
+The CPU total collector emit a metric with the user and system CPU time usage of the
+current process. Values are in seconds.
+
+Metric I:
+
+ * **metric name:** process_cpu_user_seconds_total
+ * **collected when:** On every collect
+ * **collected on:** All operating systems
+
+Metric II:
+
+ * **metric name:** process_cpu_system_seconds_total
+ * **collected when:** On every collect
+ * **collected on:** All operating systems
+
+Metric III:
+
+ * **metric name:** process_cpu_seconds_total
+ * **collected when:** On every collect
+ * **collected on:** All operating systems
+
+### Active requests
+
+The Active requests collector emit a metric with the number of open network requests held
+by the node.js working queue.
+
+ * **metric name:** nodejs_active_requests_total
+ * **collected when:** On every collect
+ * **collected on:** All operating systems if `process._getActiveRequests()` is available
+
+### Active handles
+
+The Active handles collector emit a metric with the number of open handles (such as `setTimeout`
+etc) held by the node.js working queue.
+
+ * **metric name:** nodejs_active_handles_total
+ * **collected when:** On every collect
+ * **collected on:** All operating systems if `process._getActiveRequests()` is available
 
 ## Attribution
 
