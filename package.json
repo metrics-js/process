@@ -19,8 +19,16 @@
     "url": "https://github.com/metrics-js/process/issues"
   },
   "homepage": "https://github.com/metrics-js/process#readme",
+  "keywords": [
+    "server-statistics",
+    "server-stats",
+    "statistics",
+    "metrics",
+    "monitoring",
+    "process"
+  ],
   "dependencies": {
-    "@metrics/client": "^2.2.0",
+    "@metrics/metric": "^1.0.0",
     "deferred-interval": "^2.0.0",
     "readable-stream": "^3.1.0"
   },
