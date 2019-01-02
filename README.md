@@ -5,6 +5,7 @@ Module for collecting different process and system metrics providing them as a m
 [![Dependencies](https://img.shields.io/david/metrics-js/process.svg?style=flat-square)](https://david-dm.org/metrics-js/process)
 [![Build Status](http://img.shields.io/travis/metrics-js/process/master.svg?style=flat-square)](https://travis-ci.org/metrics-js/process)
 [![Greenkeeper badge](https://badges.greenkeeper.io/metrics-js/process.svg?style=flat-square)](https://greenkeeper.io/)
+[![Known Vulnerabilities](https://snyk.io/test/github/metrics-js/process/badge.svg?targetFile=package.json&style=flat-square)](https://snyk.io/test/github/metrics-js/process?targetFile=package.json)
 
 ## Installation
 
