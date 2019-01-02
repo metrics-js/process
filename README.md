@@ -33,7 +33,7 @@ proc.start();
 
 ## Description
 
-This module collect different process and system metrics on a scheduled frequenzy. The module is
+This module collects different process and system metrics on a scheduled frequency. The module is
 a readable stream which each metrics is emitted on as an metric object on each schedule.
 
 The stream of metrics can be piped into ex the [@metrics/client](https://github.com/metrics-js/client)
@@ -56,18 +56,18 @@ proc.start();
 ```
 
 Each metric is collected by a collector. Most collectors will provide metrics on each scheduled
-run but some metrics will only run once due to its nature. There is also sertain metrics which
-only will be collected for sertain operating systems it run on. Please see [collectors](#collectors)
-for further detail.
+run but some metrics will only run once due to its nature. Some metrics will not be collected on
+some operating systems. Please see [collectors](#collectors) for further detail.
 
 ### On not staying alive
 
-The internal scheduler is a defered interval which prevents kicking off the collection of a new set of
-metrics before any previous collection of metrics has finished. This prevent duplicate metrics and possible
-memory leaks if any of the async operations of collecting the metrics get stail for some weird
-reason.
+The internal scheduler is a defered interval which prevents kicking off the collection of a new
+set of metrics before any previous collection of metrics has finished. This prevents duplicate
+metrics and possible memory leaks if any of the async operations of collecting the metrics get
+stale for some weird reason.
 
-The scheduler is by default unrefered so it will not hold up your node.js process.
+The scheduler is by default [unrefered](https://nodejs.org/en/docs/guides/timers-in-node/) so
+it will not hold up your node.js process.
 
 ## Constructor
 
@@ -91,7 +91,7 @@ Returns a Readable stream in object mode.
 
 ## API
 
-The Process instance have the following API:
+The Process instance has the following API:
 
 ### .start()
 
@@ -108,7 +108,7 @@ These are the following mertics collected by this module:
 
 ### Version
 
-The Version collector emit a metric with the node.js version used to run the process.
+The Version collector emits a metric with the node.js version used to run the process.
 
  * **metric name:** nodejs_version_info
  * **collected when:** Only once
@@ -116,7 +116,7 @@ The Version collector emit a metric with the node.js version used to run the pro
 
 ### V8 heap
 
-The V8 Heap collector emit metrics about the V8 heap spaces.
+The V8 Heap collector emits metrics about the V8 heap spaces.
 
 Metric I:
 
@@ -138,7 +138,7 @@ Metric III:
 
 ### Process start time
 
-The Process start time collector emit a metric for when the node.js process started.
+The Process start time collector emits a metric for when the node.js process started.
 
  * **metric name:** process_start_time_seconds
  * **collected when:** Only once
@@ -146,7 +146,7 @@ The Process start time collector emit a metric for when the node.js process star
 
 ### Resident memory
 
-The Resident memory collector emit metrics with resident memory in bytes, virtual
+The Resident memory collector emits metrics with resident memory in bytes, virtual
 memory in bytes and process heap size in bytes.
 
 Metric I:
@@ -169,7 +169,7 @@ Metric III:
 
 ### Open file descriptors
 
-The Open file descriptor collector emit a metric with the number of open file
+The Open file descriptor collector emits a metric with the number of open file
 descriptors.
 
  * **metric name:** process_open_fds
@@ -178,7 +178,7 @@ descriptors.
 
 ### Max file descriptors
 
-The max file descriptor collector emit a metric with the maximum number of file
+The max file descriptor collector emits a metric with the maximum number of file
 descriptors that can be opened.
 
  * **metric name:** process_max_fds
@@ -187,7 +187,7 @@ descriptors that can be opened.
 
 ### Heap used and size
 
-The Heap used and size collector emit metrics about the memory usage of the Node.js
+The Heap used and size collector emits metrics about the memory usage of the Node.js
 process.
 
 Metric I:
@@ -210,7 +210,7 @@ Metric III:
 
 ### Eventloop lag
 
-The Eventloop lag collector emit a metric with the lag of the eventloop in seconds.
+The Eventloop lag collector emits a metric with the lag of the eventloop in seconds.
 
  * **metric name:** nodejs_eventloop_lag_seconds
  * **collected when:** On every collect
@@ -218,7 +218,7 @@ The Eventloop lag collector emit a metric with the lag of the eventloop in secon
 
 ### CPU total
 
-The CPU total collector emit a metric with the user and system CPU time usage of the
+The CPU total collector emits a metric with the user and system CPU time usage of the
 current process. Values are in seconds.
 
 Metric I:
@@ -241,8 +241,8 @@ Metric III:
 
 ### Active requests
 
-The Active requests collector emit a metric with the number of open network requests held
-by the node.js working queue.
+The Active requests collector emits a metric with the number of open network requests
+held by the node.js working queue.
 
  * **metric name:** nodejs_active_requests_total
  * **collected when:** On every collect
@@ -250,8 +250,8 @@ by the node.js working queue.
 
 ### Active handles
 
-The Active handles collector emit a metric with the number of open handles (such as `setTimeout`
-etc) held by the node.js working queue.
+The Active handles collector emits a metric with the number of open handles (such as
+`setTimeout` etc) held by the node.js working queue.
 
  * **metric name:** nodejs_active_handles_total
  * **collected when:** On every collect
@@ -259,11 +259,9 @@ etc) held by the node.js working queue.
 
 ## Attribution
 
-Most of the metric collectors in this module does origin from the process collectors in [prom-client](https://github.com/siimon/prom-client). prom-client is licensed under a Apache License 2.0, which
+Most of the metric collectors in this module originate in the process collectors in [prom-client](https://github.com/siimon/prom-client). prom-client is licensed under a Apache License 2.0, which
 is included in our [license](https://github.com/metrics-js/process/blob/master/LICENSE).
 
-### Metric naming
-
-Due to the above fact, most metrics in this module bear the same name as the process mertics in
-prom-client. If one use this module to provide metrics to Prometheus, these metrics will provide
+Due to the above fact, most metrics in this module bear the same name as the process metrics in
+prom-client. If one uses this module to provide metrics to Prometheus, these metrics will provide
 the same metrics as by prom-client.
