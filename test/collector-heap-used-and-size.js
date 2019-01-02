@@ -4,9 +4,9 @@ const tap = require('tap');
 
 const Collector = require('../lib/collector-heap-used-and-size');
 
-tap.test('Constructor() - object type - should be CollectorHeadUsedAndSize', (t) => {
+tap.test('Constructor() - object type - should be CollectorHeapUsedAndSize', (t) => {
     const collector = new Collector();
-    t.equal(Object.prototype.toString.call(collector), '[object CollectorHeadUsedAndSize]');
+    t.equal(Object.prototype.toString.call(collector), '[object CollectorHeapUsedAndSize]');
     t.end();
 });
 
