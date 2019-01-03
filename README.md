@@ -5,6 +5,7 @@ Module for collecting different process and system metrics providing them as a m
 [![Dependencies](https://img.shields.io/david/metrics-js/process.svg?style=flat-square)](https://david-dm.org/metrics-js/process)
 [![Build Status](http://img.shields.io/travis/metrics-js/process/master.svg?style=flat-square)](https://travis-ci.org/metrics-js/process)
 [![Greenkeeper badge](https://badges.greenkeeper.io/metrics-js/process.svg?style=flat-square)](https://greenkeeper.io/)
+[![Known Vulnerabilities](https://snyk.io/test/github/metrics-js/process/badge.svg?targetFile=package.json&style=flat-square)](https://snyk.io/test/github/metrics-js/process?targetFile=package.json)
 
 ## Installation
 
@@ -101,6 +102,51 @@ upon calling this method.
 ### .stop()
 
 Stops the scheduling of metric collection. Calling this method will not break the stream pipeline.
+
+### Events
+
+An instance of the object will emit the following events:
+
+#### drop
+
+Emitted when the process is dropping metrics. Will emit the dropped metric.
+
+_Example_
+
+```js
+const process = new Process();
+process.on('drop', metric => {
+    console.log('dropped metric', metric);
+});
+```
+
+#### collect:start
+
+Emitted when the process starts collecting metrics.
+
+_Example_
+
+```js
+const process = new Process();
+process.on('collect:start', () => {
+    console.log('Started collecting metrics');
+});
+process.start();
+```
+
+#### collect:end
+
+Emitted when the process is done collecting metrics.
+
+_Example_
+
+```js
+const process = new Process();
+process.on('collect:end', () => {
+    console.log('Ended collecting metrics');
+});
+process.start();
+```
 
 ## Collectors
 
