@@ -103,11 +103,11 @@ upon calling this method.
 
 Stops the scheduling of metric collection. Calling this method will not break the stream pipeline.
 
-### Events
+## Events
 
 An instance of the object will emit the following events:
 
-#### drop
+### drop
 
 Emitted when the process is dropping metrics. Will emit the dropped metric.
 
@@ -120,7 +120,7 @@ process.on('drop', metric => {
 });
 ```
 
-#### collect:start
+### collect:start
 
 Emitted when the process starts collecting metrics.
 
@@ -134,7 +134,7 @@ process.on('collect:start', () => {
 process.start();
 ```
 
-#### collect:end
+### collect:end
 
 Emitted when the process is done collecting metrics.
 
