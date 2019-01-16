@@ -28,7 +28,7 @@
     "process"
   ],
   "dependencies": {
-    "@metrics/metric": "^1.0.0",
+    "@metrics/metric": "^2.1.0",
     "deferred-interval": "^2.0.0",
     "readable-stream": "^3.1.0"
   },
