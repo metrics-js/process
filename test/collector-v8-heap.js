@@ -40,15 +40,21 @@ tap.test('.collect() - call method - 1st item in Array - should return an object
     t.end();
 });
 
+tap.test('.collect() - call method - 1st item in Array - should return an object where "type" is 1', (t) => {
+    const collector = new Collector();
+    const result = collector.collect();
+    t.type(result[0], 'object');
+    t.equal(result[0].type, 1);
+    t.end();
+});
+
 tap.test('.collect() - call method - 1st item in Array - should return an object where "meta" is and object with metadata', (t) => {
     const collector = new Collector();
     const result = collector.collect();
     t.type(result[0], 'object');
     t.type(result[0].meta, 'object');
-    // Keys can vary between node versions, just check that they are numbers
-    Object.keys(result[0].meta).forEach((key) => {
-        t.true(Number.isInteger(result[0].meta[key]));
-    });
+    // Labels can vary between node versions, just check its not just an empty array
+    t.true(result[0].labels.length > 1);
     t.end();
 });
 
@@ -74,15 +80,21 @@ tap.test('.collect() - call method - 2nd item in Array - should return an object
     t.end();
 });
 
+tap.test('.collect() - call method - 2nd item in Array - should return an object where "type" is 1', (t) => {
+    const collector = new Collector();
+    const result = collector.collect();
+    t.type(result[1], 'object');
+    t.equal(result[1].type, 1);
+    t.end();
+});
+
 tap.test('.collect() - call method - 2nd item in Array - should return an object where "meta" is and object with metadata', (t) => {
     const collector = new Collector();
     const result = collector.collect();
     t.type(result[1], 'object');
     t.type(result[1].meta, 'object');
-    // Keys can vary between node versions, just check that they are numbers
-    Object.keys(result[1].meta).forEach((key) => {
-        t.true(Number.isInteger(result[1].meta[key]));
-    });
+    // Labels can vary between node versions, just check its not just an empty array
+    t.true(result[1].labels.length > 1);
     t.end();
 });
 
@@ -108,14 +120,20 @@ tap.test('.collect() - call method - 3rd item in Array - should return an object
     t.end();
 });
 
+tap.test('.collect() - call method - 3rd item in Array - should return an object where "type" is 1', (t) => {
+    const collector = new Collector();
+    const result = collector.collect();
+    t.type(result[2], 'object');
+    t.equal(result[2].type, 1);
+    t.end();
+});
+
 tap.test('.collect() - call method - 3rd item in Array - should return an object where "meta" is and object with metadata', (t) => {
     const collector = new Collector();
     const result = collector.collect();
     t.type(result[2], 'object');
     t.type(result[2].meta, 'object');
-    // Keys can vary between node versions, just check that they are numbers
-    Object.keys(result[2].meta).forEach((key) => {
-        t.true(Number.isInteger(result[2].meta[key]));
-    });
+    // Labels can vary between node versions, just check its not just an empty array
+    t.true(result[2].labels.length > 1);
     t.end();
 });

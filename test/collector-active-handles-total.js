@@ -41,6 +41,14 @@ tap.test('.collect() - call method - 1st item in Array - should return an object
     t.end();
 });
 
+tap.test('.collect() - call method - 1st item in Array - should return an object where "type" is 1', (t) => {
+    const collector = new Collector();
+    const result = collector.collect();
+    t.type(result[0], 'object');
+    t.equal(result[0].type, 1);
+    t.end();
+});
+
 tap.test('.collect() - "process._getActiveHandles" is not a function - should return "null"', (t) => {
     const original = process._getActiveHandles;
     process._getActiveHandles = null;
