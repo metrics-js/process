@@ -41,6 +41,14 @@ tap.test('.collect() - call method - 1st item in Array - should be an object whe
     t.end();
 });
 
+tap.test('.collect() - call method - 1st item in Array - should return an object where "type" is 1', (t) => {
+    const collector = new Collector();
+    const result = collector.collect();
+    t.type(result[0], 'object');
+    t.equal(result[0].type, 1);
+    t.end();
+});
+
 tap.test('.collect() - call method - 2nd item in Array - should be an object where "name" is "nodejs_heap_size_used_bytes"', (t) => {
     const collector = new Collector();
     const result = collector.collect();
@@ -64,6 +72,14 @@ tap.test('.collect() - call method - 2nd item in Array - should be an object whe
     t.end();
 });
 
+tap.test('.collect() - call method - 2nd item in Array - should return an object where "type" is 1', (t) => {
+    const collector = new Collector();
+    const result = collector.collect();
+    t.type(result[1], 'object');
+    t.equal(result[1].type, 1);
+    t.end();
+});
+
 tap.test('.collect() - call method - 3rd item in Array - should be an object where "name" is "nodejs_external_memory_bytes"', (t) => {
     const collector = new Collector();
     const result = collector.collect();
@@ -84,6 +100,14 @@ tap.test('.collect() - call method - 3rd item in Array - should be an object whe
     const result = collector.collect();
     t.type(result[2], 'object');
     t.true(Number.isFinite(result[2].value));
+    t.end();
+});
+
+tap.test('.collect() - call method - 3rd item in Array - should return an object where "type" is 1', (t) => {
+    const collector = new Collector();
+    const result = collector.collect();
+    t.type(result[2], 'object');
+    t.equal(result[2].type, 1);
     t.end();
 });
 

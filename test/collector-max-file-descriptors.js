@@ -57,6 +57,14 @@ tap.test('.collect() - condition:supported - call method twice - should return "
     t.end();
 });
 
+tap.test('.collect() - condition:supported - call method - 1st item in Array - should return an object where "type" is 1', async (t) => {
+    const collector = new Collector();
+    const result = await collector.collect();
+    t.type(result[0], 'object');
+    t.equal(result[0].type, 1);
+    t.end();
+});
+
 /**
  * When the operating system DOES NOT support reporting file descriptors
  */

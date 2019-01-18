@@ -47,6 +47,14 @@ tap.test('.collect() - condition:supported - call method - 1st item in Array - s
     t.end();
 });
 
+tap.test('.collect() - condition:supported - call method - 1st item in Array - should return an object where "type" is 1', async (t) => {
+    const collector = new Collector();
+    const result = await collector.collect();
+    t.type(result[0], 'object');
+    t.equal(result[0].type, 1);
+    t.end();
+});
+
 tap.test('.collect() - condition:supported - call method - 2nd item in Array - should return an object where "name" is "process_virtual_memory_bytes"', async (t) => {
     const collector = new Collector();
     const result = await collector.collect();
@@ -67,6 +75,14 @@ tap.test('.collect() - condition:supported - call method - 2nd item in Array - s
     const result = await collector.collect();
     t.type(result[1], 'object');
     t.true(Number.isFinite(result[1].value));
+    t.end();
+});
+
+tap.test('.collect() - condition:supported - call method - 2nd item in Array - should return an object where "type" is 1', async (t) => {
+    const collector = new Collector();
+    const result = await collector.collect();
+    t.type(result[1], 'object');
+    t.equal(result[1].type, 1);
     t.end();
 });
 
@@ -93,6 +109,14 @@ tap.test('.collect() - condition:supported - call method - 3rd item in Array - s
     t.end();
 });
 
+tap.test('.collect() - condition:supported - call method - 3rd item in Array - should return an object where "type" is 1', async (t) => {
+    const collector = new Collector();
+    const result = await collector.collect();
+    t.type(result[2], 'object');
+    t.equal(result[2].type, 1);
+    t.end();
+});
+
 
 /**
  * When the operating system DOES NOT support reporting more than the resident process memory
@@ -106,7 +130,7 @@ tap.test('.collect() - condition:unsupported - call method - should return an Ar
     t.end();
 });
 
-tap.test('.collect() - condition:supported - call method - 1st item in Array - should return an object where "name" is "process_resident_memory_bytes"', async (t) => {
+tap.test('.collect() - condition:unsupported - call method - 1st item in Array - should return an object where "name" is "process_resident_memory_bytes"', async (t) => {
     const collector = new Collector();
     const result = await collector.collect();
     t.type(result[0], 'object');
@@ -114,10 +138,18 @@ tap.test('.collect() - condition:supported - call method - 1st item in Array - s
     t.end();
 });
 
-tap.test('.collect() - condition:supported - call method - 1st item in Array - should return an object where "value" is an Integer', async (t) => {
+tap.test('.collect() - condition:unsupported - call method - 1st item in Array - should return an object where "value" is an Integer', async (t) => {
     const collector = new Collector();
     const result = await collector.collect();
     t.type(result[0], 'object');
     t.true(Number.isFinite(result[0].value));
+    t.end();
+});
+
+tap.test('.collect() - condition:unsupported - call method - 1st item in Array - should return an object where "type" is 1', async (t) => {
+    const collector = new Collector();
+    const result = await collector.collect();
+    t.type(result[0], 'object');
+    t.equal(result[0].type, 1);
     t.end();
 });

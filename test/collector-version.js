@@ -40,15 +40,27 @@ tap.test('.collect() - call method - 1st item in Array - should return an object
     t.end();
 });
 
-tap.test('.collect() - call method - 1st item in Array - should return an object where "meta" is and object with version numbers as segmens', (t) => {
+tap.test('.collect() - call method - 1st item in Array - should return an object where "type" is 1', (t) => {
     const collector = new Collector();
     const result = collector.collect();
     t.type(result[0], 'object');
-    t.type(result[0].meta, 'object');
-    t.type(result[0].meta.version, 'string');
-    t.true(Number.isInteger(result[0].meta.major));
-    t.true(Number.isInteger(result[0].meta.minor));
-    t.true(Number.isInteger(result[0].meta.patch));
+    t.equal(result[0].type, 1);
+    t.end();
+});
+
+tap.test('.collect() - call method - 1st item in Array - should return an object where "labels" represent the version numbers as segmens', (t) => {
+    const collector = new Collector();
+    const result = collector.collect();
+    t.type(result[0], 'object');
+    t.true(Array.isArray(result[0].labels));
+    t.equal(result[0].labels[0].name, 'version');
+    t.type(result[0].labels[0].value, 'string');
+    t.equal(result[0].labels[1].name, 'major');
+    t.true(Number.isInteger(result[0].labels[1].value));
+    t.equal(result[0].labels[2].name, 'minor');
+    t.true(Number.isInteger(result[0].labels[2].value));
+    t.equal(result[0].labels[3].name, 'patch');
+    t.true(Number.isInteger(result[0].labels[3].value));
     t.end();
 });
 
