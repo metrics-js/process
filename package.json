@@ -1,6 +1,6 @@
 {
   "name": "@metrics/process",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Module for collecting different process and system metrics and providing them as a metric stream",
   "main": "lib/process.js",
   "scripts": {
