@@ -3,6 +3,9 @@
   "version": "2.1.0",
   "description": "Module for collecting different process and system metrics and providing them as a metric stream",
   "main": "lib/process.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "test": "tap test/*.js",
     "test:coverage": "tap test/*.js --cov",
