@@ -10,11 +10,10 @@ tap.test('Constructor() - object type - should be CollectorV8Heap', (t) => {
     t.end();
 });
 
-tap.test('.collect() - call method - should return an Array with the length of 3', (t) => {
+tap.test('.collect() - call method - should return an Array', (t) => {
     const collector = new Collector();
     const result = collector.collect();
     t.true(Array.isArray(result));
-    t.equal(result.length, 24);
     t.end();
 });
 
