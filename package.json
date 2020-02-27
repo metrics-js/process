@@ -7,8 +7,7 @@
     "lib"
   ],
   "scripts": {
-    "test": "tap test/*.js",
-    "test:coverage": "tap test/*.js --cov",
+    "test": "tap test/*.js --expose-gc",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
