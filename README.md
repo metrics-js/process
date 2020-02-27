@@ -2,10 +2,9 @@
 
 Module for collecting different process and system metrics providing them as a metric stream.
 
-[![Dependencies](https://img.shields.io/david/metrics-js/process.svg?style=flat-square)](https://david-dm.org/metrics-js/process)
-[![Build Status](http://img.shields.io/travis/metrics-js/process/master.svg?style=flat-square)](https://travis-ci.org/metrics-js/process)
-[![Greenkeeper badge](https://badges.greenkeeper.io/metrics-js/process.svg?style=flat-square)](https://greenkeeper.io/)
-[![Known Vulnerabilities](https://snyk.io/test/github/metrics-js/process/badge.svg?targetFile=package.json&style=flat-square)](https://snyk.io/test/github/metrics-js/process?targetFile=package.json)
+[![Dependencies](https://img.shields.io/david/metrics-js/process.svg)](https://david-dm.org/metrics-js/process)
+[![GitHub Actions status](https://github.com/metrics-js/process/workflows/Run%20Lint%20and%20Tests/badge.svg)](https://github.com/metrics-js/process/actions?query=workflow%3A%22Run+Lint+and+Tests%22)
+[![Known Vulnerabilities](https://snyk.io/test/github/metrics-js/process/badge.svg?targetFile=package.json)](https://snyk.io/test/github/metrics-js/process?targetFile=package.json)
 
 ## Installation
 
@@ -57,7 +56,8 @@ proc.start();
 ```
 
 Each metric is collected by a collector. Most collectors will provide metrics on each scheduled
-run but some metrics will only run once due to its nature. Some metrics will not be collected on
+run or when the underlaying feature for generating the metric emits to build the metric out of,
+but some metrics will only run once due to its nature. Some metrics will not be collected on
 some operating systems. Please see [collectors](#collectors) for further detail.
 
 ### On not staying alive
@@ -94,10 +94,16 @@ Returns a Readable stream in object mode.
 
 The Process instance has the following API:
 
-### .start()
+### .start(options)
 
 Starts the scheduling of metric collection. The first run of metric collection will run immediately
 upon calling this method.
+
+### options (optional)
+
+An Object containing misc configuration. The following values can be provided:
+
+ * **gc** - `Boolean` - Turns collection of gc metrics on or off. Default: false.
 
 ### .stop()
 
@@ -302,6 +308,23 @@ The Active handles collector emits a metric with the number of open handles (suc
  * **metric name:** nodejs_active_handles_total
  * **collected when:** On every collect
  * **collected on:** All operating systems if `process._getActiveRequests()` is available
+
+### Garbage collection
+
+The garbage collection (GC) collector emits a metric timing the length of the GC everytime
+a GC has run.
+
+Do note that collecting metrics on GC has a performance impact on the system in it self.
+Its adviced that collecting GC metrics should be done in moderation and for small periods
+of time.
+
+Collecting GC metrics is by default turned off. It can be enabled by the `gc` argument on
+the `.start()` method.
+
+ * **metric name:** nodejs_gc_duration_seconds
+ * **collected when:** When enabled, every time a GC is done
+ * **collected on:** All operating systems
+
 
 ## Attribution
 
