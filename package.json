@@ -30,7 +30,7 @@
     "process"
   ],
   "dependencies": {
-    "@metrics/metric": "2.3.2",
+    "@metrics/metric": "2.3.3",
     "deferred-interval": "2.0.0",
     "readable-stream": "3.6.2"
   },
