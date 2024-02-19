@@ -5,11 +5,6 @@ Module for collecting different process and system metrics providing them as a m
 [![GitHub Actions status](https://github.com/metrics-js/process/workflows/Run%20Lint%20and%20Tests/badge.svg)](https://github.com/metrics-js/process/actions?query=workflow%3A%22Run+Lint+and+Tests%22)
 [![Known Vulnerabilities](https://snyk.io/test/github/metrics-js/process/badge.svg?targetFile=package.json)](https://snyk.io/test/github/metrics-js/process?targetFile=package.json)
 
-# @metrics/client
-
-[![GitHub Actions status](https://github.com/metrics-js/client/workflows/Run%20Lint%20and%20Tests/badge.svg)](https://github.com/metrics-js/client/actions?query=workflow%3A%22Run+Lint+and+Tests%22)
-[![Known Vulnerabilities](https://snyk.io/test/github/metrics-js/client/badge.svg?targetFile=package.json)](https://snyk.io/test/github/metrics-js/client?targetFile=package.json)
-
 A streaming metric producer. Allows producing counters, gauges, time series in a way that is independent of your metrics system so that you can produce metrics and let consumers decide how to consume them. Additionally, you can pipe together different metrics streams before finally consuming them all in a single location.
 
 ## Usage
