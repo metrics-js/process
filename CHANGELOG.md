@@ -1,3 +1,10 @@
+## [2.2.2](https://github.com/metrics-js/process/compare/v2.2.1...v2.2.2) (2025-01-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @metrics/metric to v2.3.4 ([#78](https://github.com/metrics-js/process/issues/78)) ([baa8bb9](https://github.com/metrics-js/process/commit/baa8bb9db27ce5bbf6951efd61e49b1ff1bcf673))
+
 ## [2.2.1](https://github.com/metrics-js/process/compare/v2.2.0...v2.2.1) (2023-11-08)
 
 
