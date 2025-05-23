@@ -1,52 +1,52 @@
 {
-	"name": "@metrics/process",
-	"version": "2.2.2",
-	"description": "Module for collecting different process and system metrics and providing them as a metric stream",
-	"main": "lib/process.js",
-	"files": [
-		"lib"
-	],
-	"scripts": {
-		"test": "tap test/*.js --expose-gc --reporter tap",
-		"lint": "eslint .",
-		"lint:fix": "eslint . --fix"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/metrics-js/process.git"
-	},
-	"author": "Trygve Lie",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/metrics-js/process/issues"
-	},
-	"homepage": "https://github.com/metrics-js/process#readme",
-	"keywords": [
-		"server-statistics",
-		"server-stats",
-		"statistics",
-		"metrics",
-		"monitoring",
-		"process"
-	],
-	"dependencies": {
-		"@metrics/metric": "2.3.4",
-		"deferred-interval": "2.0.0",
-		"readable-stream": "3.6.2"
-	},
-	"devDependencies": {
-		"@semantic-release/changelog": "6.0.3",
-		"@semantic-release/commit-analyzer": "13.0.1",
-		"@semantic-release/git": "10.0.1",
-		"@semantic-release/github": "10.3.5",
-		"@semantic-release/npm": "12.0.1",
-		"@semantic-release/release-notes-generator": "14.0.3",
-		"eslint": "9.27.0",
-		"eslint-config-prettier": "9.1.0",
-		"eslint-plugin-prettier": "5.4.0",
-		"globals": "15.9.0",
-		"prettier": "3.5.3",
-		"semantic-release": "24.2.1",
-		"tap": "14.11.0"
-	}
+  "name": "@metrics/process",
+  "version": "2.2.2",
+  "description": "Module for collecting different process and system metrics and providing them as a metric stream",
+  "main": "lib/process.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "tap test/*.js --node-arg=\"--expose-gc\"",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metrics-js/process.git"
+  },
+  "author": "Trygve Lie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/metrics-js/process/issues"
+  },
+  "homepage": "https://github.com/metrics-js/process#readme",
+  "keywords": [
+    "server-statistics",
+    "server-stats",
+    "statistics",
+    "metrics",
+    "monitoring",
+    "process"
+  ],
+  "dependencies": {
+    "@metrics/metric": "2.3.4",
+    "deferred-interval": "2.0.0",
+    "readable-stream": "3.6.2"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "6.0.3",
+    "@semantic-release/commit-analyzer": "13.0.1",
+    "@semantic-release/git": "10.0.1",
+    "@semantic-release/github": "10.3.5",
+    "@semantic-release/npm": "12.0.1",
+    "@semantic-release/release-notes-generator": "14.0.3",
+    "eslint": "9.27.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.4.0",
+    "globals": "15.9.0",
+    "prettier": "3.5.3",
+    "semantic-release": "24.2.1",
+    "tap": "21.1.0"
+  }
 }
