@@ -32,7 +32,7 @@
 	"dependencies": {
 		"@metrics/metric": "2.3.4",
 		"deferred-interval": "2.0.0",
-		"readable-stream": "3.6.2"
+		"readable-stream": "4.7.0"
 	},
 	"devDependencies": {
 		"@semantic-release/changelog": "6.0.3",
