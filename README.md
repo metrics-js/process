@@ -10,6 +10,10 @@ Module for collecting different process and system metrics providing them as a m
 - [Getting started with MetricsJS](https://metrics-js.github.io/introduction/getting-started/).
 - [Reference documentaiton for `@metrics/process`](https://metrics-js.github.io/reference/process/).
 
+## Running tests
+
+Most of the tests in this module only works on Linux operating systems. If you are working on a different operating system, you have to run `npm run test:non-linux` in order for the tests to pass.
+
 ## Attribution
 
 Most of the metric collectors in this module originate in the process collectors in [prom-client](https://github.com/siimon/prom-client). prom-client is licensed under a Apache License 2.0, which
