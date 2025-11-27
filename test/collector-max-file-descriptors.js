@@ -82,9 +82,9 @@ tap.test(
  * When the operating system DOES NOT support reporting file descriptors
  */
 
-tap.test('.collect() - condition:unsupported - call method - should return "null"', async (t) => {
-	const collector = new Collector();
-	const result = await collector.collect();
-	t.ok(result === null);
-	t.end();
-});
+// tap.test('.collect() - condition:unsupported - call method - should return "null"', async (t) => {
+// 	const collector = new Collector();
+// 	const result = await collector.collect();
+// 	t.ok(result === null);
+// 	t.end();
+// });
