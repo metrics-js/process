@@ -36,13 +36,13 @@
 		"readable-stream": "3.6.2"
 	},
 	"devDependencies": {
-        "@metrics/semantic-release-config": "1.0.0",
-		"eslint": "9.32.0",
-		"eslint-config-prettier": "9.1.2",
+		"@metrics/semantic-release-config": "1.0.0",
+		"eslint": "9.39.1",
+		"eslint-config-prettier": "10.1.8",
 		"eslint-plugin-prettier": "5.5.4",
-		"globals": "15.9.0",
-		"prettier": "3.6.2",
+		"globals": "16.5.0",
+		"prettier": "3.7.4",
 		"semantic-release": "25.0.2",
-		"tap": "21.3.0"
+		"tap": "21.5.0"
 	}
 }
